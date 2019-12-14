@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{B6F8A4A4-4905-419D-928B-AAE364338D07}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSS.Clients.Storage.AliOSS", "Storage\OSS.Clients.Storage.AliOSS\OSS.Clients.Storage.AliOSS.csproj", "{1C070886-4F69-4756-8D7E-BC69571108F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C070886-4F69-4756-8D7E-BC69571108F8}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{1C070886-4F69-4756-8D7E-BC69571108F8}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{1C070886-4F69-4756-8D7E-BC69571108F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C070886-4F69-4756-8D7E-BC69571108F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1C070886-4F69-4756-8D7E-BC69571108F8} = {B6F8A4A4-4905-419D-928B-AAE364338D07}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {748478BE-17FF-446F-B0FF-39CF870A3785}
+	EndGlobalSection
+EndGlobal

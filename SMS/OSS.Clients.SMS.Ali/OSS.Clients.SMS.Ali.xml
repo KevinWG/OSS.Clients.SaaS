@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OSS.Clients.SMS.Ali</name>
+    </assembly>
+    <members>
+        <member name="T:OSS.Clients.SMS.Ali.AliSmsClient">
+            <summary>
+             阿里云的短信实现
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.SendAliSmsResp.Code">
+            <summary>
+             状态码-返回OK代表请求成功,其他错误码详见错误码列表
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.SendAliSmsResp.Message">
+            <summary>
+            状态码的描述
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.SendAliSmsResp.BizId">
+            <summary>
+             发送回执ID,可根据该ID查询具体的发送状态
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.SendAliSmsResp.RequestId">
+            <summary>
+             请求ID
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.Reqs.SendAliSmsReq.template_code">
+            <summary>
+             模板编号
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.Reqs.SendAliSmsReq.PhoneNums">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.Reqs.SendAliSmsReq.sign_name">
+            <summary>
+             签名
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.Reqs.SendAliSmsReq.body_paras">
+            <summary>
+             内容数据
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.Reqs.SendAliSmsResp.Code">
+            <summary>
+             状态码-返回OK代表请求成功,其他错误码详见错误码列表
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.Reqs.SendAliSmsResp.Message">
+            <summary>
+            状态码的描述
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.Reqs.SendAliSmsResp.BizId">
+            <summary>
+             发送回执ID,可根据该ID查询具体的发送状态
+            </summary>
+        </member>
+        <member name="P:OSS.Clients.SMS.Ali.Reqs.SendAliSmsResp.RequestId">
+            <summary>
+             请求ID
+            </summary>
+        </member>
+    </members>
+</doc>

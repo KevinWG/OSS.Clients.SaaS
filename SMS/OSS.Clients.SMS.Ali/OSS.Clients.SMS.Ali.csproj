@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.1</Version>
+    <Authors>OSSCore</Authors>
+    <Company>OSSCore</Company>
+    <Product>OSSCore</Product>
+    <RepositoryUrl>https://github.com/KevinWG/OSS.Clients.SaaS</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/KevinWG/OSS.Clients.SaaS</PackageProjectUrl>
+    <Description>阿里云短信发送封装</Description>
+    <PackageReleaseNotes>添加注释</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>OSS.Clients.SMS.Ali.xml</DocumentationFile>
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="OSS.Common" Version="2.3.1.7" />
+    <PackageReference Include="OSS.Tools.Http" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>

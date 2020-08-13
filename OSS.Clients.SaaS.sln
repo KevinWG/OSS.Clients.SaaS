@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{B6F8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSS.Clients.Storage.AliOSS", "Storage\OSS.Clients.Storage.AliOSS\OSS.Clients.Storage.AliOSS.csproj", "{1C070886-4F69-4756-8D7E-BC69571108F8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SMS", "SMS", "{BAB6EAC5-457A-4D29-9703-9F9E8217EE43}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSS.Clients.SMS.Ali", "SMS\OSS.Clients.SMS.Ali\OSS.Clients.SMS.Ali.csproj", "{5ED75A0D-0BA5-49FA-9966-85E412EE6CD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{1C070886-4F69-4756-8D7E-BC69571108F8}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{1C070886-4F69-4756-8D7E-BC69571108F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C070886-4F69-4756-8D7E-BC69571108F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ED75A0D-0BA5-49FA-9966-85E412EE6CD2}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED75A0D-0BA5-49FA-9966-85E412EE6CD2}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{5ED75A0D-0BA5-49FA-9966-85E412EE6CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED75A0D-0BA5-49FA-9966-85E412EE6CD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1C070886-4F69-4756-8D7E-BC69571108F8} = {B6F8A4A4-4905-419D-928B-AAE364338D07}
+		{5ED75A0D-0BA5-49FA-9966-85E412EE6CD2} = {BAB6EAC5-457A-4D29-9703-9F9E8217EE43}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {748478BE-17FF-446F-B0FF-39CF870A3785}

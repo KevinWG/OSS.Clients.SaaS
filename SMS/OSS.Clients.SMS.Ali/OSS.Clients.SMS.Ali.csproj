@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>OSSCore</Authors>
     <Company>OSSCore</Company>
     <Product>OSSCore</Product>
@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>OSS.Clients.SMS.Ali.xml</DocumentationFile>
+    <DocumentationFile>bin\OSS.Clients.SMS.Ali.xml</DocumentationFile>
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
 

@@ -22,7 +22,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using OSS.Clients.SMS.Ali.Reqs;
 using OSS.Common.BasicImpls;
-using OSS.Common.BasicMos.Resp;
 using OSS.Common.Encrypt;
 using OSS.Common.Extention;
 using OSS.Tools.Http.Extention;
@@ -106,29 +105,5 @@ namespace OSS.Clients.SMS.Ali
 
         #endregion
     }
-
-    public class SendAliSmsResp : Resp
-    {
-        /// <summary>
-        ///  状态码-返回OK代表请求成功,其他错误码详见错误码列表
-        /// </summary>
-        public string Code { get; set; }
-
-        /// <summary>
-        ///	状态码的描述
-        /// </summary>
-        public string Message { get; set; }
-
-        /// <summary>
-        ///  发送回执ID,可根据该ID查询具体的发送状态
-        /// </summary>
-        public string BizId { get; set; }
-
-        /// <summary>
-        ///  请求ID
-        /// </summary>
-        public string RequestId { get; set; }
-    }
-
     
 }

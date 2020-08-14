@@ -35,6 +35,17 @@ namespace OSS.Clients.SMS.Ali
     /// </summary>
     public class AliSmsClient:BaseApiConfigProvider<AliSmsConfig>
     {
+        /// <inheritdoc />
+        public AliSmsClient()
+        {
+        }
+
+        /// <inheritdoc />
+        public AliSmsClient(AliSmsConfig config)
+            : base(config)
+        {
+        }
+
         public async Task<SendAliSmsResp> Send(SendAliSmsReq sendReq)
         {
             var dirs = new SortedDictionary<string, string>(StringComparer.Ordinal)
@@ -68,6 +79,13 @@ namespace OSS.Clients.SMS.Ali
                  return JsonConvert.DeserializeObject<SendAliSmsResp>(content);
 
             }
+        }
+
+
+        /// <inheritdoc />
+        protected override AliSmsConfig GetDefaultConfig()
+        {
+            return AliSmsConfigProvider.DefaultConfig;
         }
 
         #region 辅助方法

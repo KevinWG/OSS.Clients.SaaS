@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using OSS.Clients.SMS.Ali.Reqs;
 using OSS.Common.BasicImpls;
+using OSS.Common.BasicMos.Resp;
 using OSS.Common.Encrypt;
 using OSS.Common.Extention;
 using OSS.Tools.Http.Extention;
@@ -33,7 +34,7 @@ namespace OSS.Clients.SMS.Ali
     /// <summary>
     ///  阿里云的短信实现
     /// </summary>
-    public class AliSmsClient:BaseApiConfigProvider<AliSmsConfig>
+    public class AliSmsClient:BaseMetaImpl<AliSmsConfig>
     {
         /// <inheritdoc />
         public AliSmsClient()
@@ -41,18 +42,23 @@ namespace OSS.Clients.SMS.Ali
         }
 
         /// <inheritdoc />
-        public AliSmsClient(AliSmsConfig config)
-            : base(config)
+        public AliSmsClient(IMetaProvider<AliSmsConfig> configProvider)
+            : base(configProvider)
         {
         }
 
         public async Task<SendAliSmsResp> Send(SendAliSmsReq sendReq)
         {
+            var appConfigRes =await GetMeta();
+            if (!appConfigRes.IsSuccess())
+                return new SendAliSmsResp().WithResp(appConfigRes);
+
+            var appConfig = appConfigRes.data;
             var dirs = new SortedDictionary<string, string>(StringComparer.Ordinal)
             {
                 {"Action", "SendSms"},
-                {"Version", ApiConfig.Version},
-                {"RegionId", ApiConfig.RegionId},
+                {"Version", appConfig.Version},
+                {"RegionId", appConfig.RegionId},
                 {"PhoneNumbers", string.Join(",", sendReq.PhoneNums)},
                 {"SignName", sendReq.sign_name},
                 {"TemplateCode", sendReq.template_code}
@@ -64,11 +70,11 @@ namespace OSS.Clients.SMS.Ali
                 dirs.Add("TemplateParam", temparas);
             }
 
-            FillApiPara(ApiConfig, dirs);
+            FillApiPara(appConfig, dirs);
 
             var req = new OssHttpRequest
             {
-                AddressUrl = string.Concat("http://dysmsapi.aliyuncs.com?", GeneratePostData(ApiConfig, dirs)),
+                AddressUrl = string.Concat("http://dysmsapi.aliyuncs.com?", GeneratePostData(appConfig, dirs)),
                 HttpMethod = HttpMethod.Get
             };
 
@@ -81,11 +87,10 @@ namespace OSS.Clients.SMS.Ali
             }
         }
 
-
         /// <inheritdoc />
-        protected override AliSmsConfig GetDefaultConfig()
+        protected override AliSmsConfig GetDefaultMeta()
         {
-            return AliSmsConfigProvider.DefaultConfig;
+           return AliSmsConfigProvider.DefaultConfig;
         }
 
         #region 辅助方法

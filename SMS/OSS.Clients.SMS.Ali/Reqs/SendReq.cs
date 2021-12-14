@@ -12,7 +12,7 @@
 #endregion
 
 using System.Collections.Generic;
-using OSS.Common.BasicMos.Resp;
+using OSS.Common.Resp;
 
 namespace OSS.Clients.SMS.Ali.Reqs
 {

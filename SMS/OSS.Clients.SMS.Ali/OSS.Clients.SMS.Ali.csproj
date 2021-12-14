@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.2.2</Version>
+    <Version>1.1</Version>
     <Authors>OSSCore</Authors>
     <Company>OSSCore</Company>
-    <Product>OSSCore</Product>
+    <Product>OSS.Clients.SMS.Ali</Product>
     <RepositoryUrl>https://github.com/KevinWG/OSS.Clients.SaaS</RepositoryUrl>
     <PackageProjectUrl>https://github.com/KevinWG/OSS.Clients.SaaS</PackageProjectUrl>
     <Description>阿里云短信发送封装</Description>
@@ -19,9 +19,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="OSS.Common" Version="2.3.2.2" />
-    <PackageReference Include="OSS.Tools.Http" Version="1.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="OSS.Common" Version="4.0.1" />
+    <PackageReference Include="OSS.Tools.Http" Version="2.3.5" />
   </ItemGroup>
 
   <ItemGroup>

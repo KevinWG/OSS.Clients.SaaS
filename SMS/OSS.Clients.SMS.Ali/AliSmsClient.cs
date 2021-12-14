@@ -22,11 +22,10 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using OSS.Clients.SMS.Ali.Reqs;
 using OSS.Common.BasicImpls;
-using OSS.Common.BasicMos.Resp;
+using OSS.Common.Resp;
 using OSS.Common.Encrypt;
-using OSS.Common.Extention;
-using OSS.Tools.Http.Extention;
 using OSS.Tools.Http.Mos;
+using OSS.Common.Extension;
 
 namespace OSS.Clients.SMS.Ali
 {
@@ -123,7 +122,7 @@ namespace OSS.Clients.SMS.Ali
 
         private static string SpecicalUrlEncode(string data)
         {
-            return data.UrlEncode().Replace("+", "%20").Replace("*", "%2A").Replace("%7E", "~");
+            return data.SafeEscapeUriString().Replace("+", "%20").Replace("*", "%2A").Replace("%7E", "~");
         }
 
         #endregion

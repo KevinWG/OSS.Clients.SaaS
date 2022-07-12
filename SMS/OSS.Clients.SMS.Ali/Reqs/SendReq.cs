@@ -46,7 +46,7 @@ namespace OSS.Clients.SMS.Ali
     /// <summary>
     ///  发送短信响应结果
     /// </summary>
-    public class SendAliSmsResp
+    public class AliSendSmsResp
     {
         /// <summary>
         ///  状态码-返回OK代表请求成功,其他错误码详见错误码列表

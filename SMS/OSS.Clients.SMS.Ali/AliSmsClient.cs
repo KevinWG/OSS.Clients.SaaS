@@ -24,6 +24,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using OSS.Common.Extension;
 
 namespace OSS.Clients.SMS.Ali
 {
@@ -38,7 +39,7 @@ namespace OSS.Clients.SMS.Ali
         /// </summary>
         /// <param name="sendReq"></param>
         /// <returns></returns>
-        public async Task<SendAliSmsResp> SendAsync(AliSendSmsReq sendReq)
+        public async Task<AliSendSmsResp> SendAsync(AliSendSmsReq sendReq)
         {
             var appConfig = await AliSmsHelper.GetSecret();
             var dirs = new SortedDictionary<string, string>(StringComparer.Ordinal)
@@ -66,7 +67,7 @@ namespace OSS.Clients.SMS.Ali
             };
 
             var content = await req.SendAsync().ReadContentAsStringAsync();
-            return JsonConvert.DeserializeObject<SendAliSmsResp>(content);
+            return JsonConvert.DeserializeObject<AliSendSmsResp>(content);
         }
 
    

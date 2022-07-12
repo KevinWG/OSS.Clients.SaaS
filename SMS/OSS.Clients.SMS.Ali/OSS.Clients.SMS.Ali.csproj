@@ -11,10 +11,12 @@
     <Description>阿里云短信发送封装</Description>
     <PackageReleaseNotes>配置优化处理</PackageReleaseNotes>
     <PackageIcon>logo.png</PackageIcon>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>\OSS.Clients.SMS.Ali.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <OutputPath></OutputPath>
   </PropertyGroup>
 

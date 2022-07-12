@@ -5,6 +5,7 @@
     <PackageProjectUrl>https://github.com/KevinWG/OSS.Clients.SaaS</PackageProjectUrl>
     <PackageIcon>logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/KevinWG/OSS.Clients.SaaS</RepositoryUrl>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

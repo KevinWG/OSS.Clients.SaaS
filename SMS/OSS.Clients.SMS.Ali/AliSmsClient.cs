@@ -13,20 +13,17 @@
 #endregion
 
 
+using Newtonsoft.Json;
+using OSS.Common;
+using OSS.Common.Encrypt;
+using OSS.Common.Extension;
+using OSS.Tools.Http;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using OSS.Clients.SMS.Ali.Reqs;
-using OSS.Common.BasicImpls;
-using OSS.Common.BasicMos.Resp;
-using OSS.Common.Encrypt;
-using OSS.Common.Extention;
-using OSS.Tools.Http.Extention;
-using OSS.Tools.Http.Mos;
 
 namespace OSS.Clients.SMS.Ali
 {
@@ -34,32 +31,22 @@ namespace OSS.Clients.SMS.Ali
     /// <summary>
     ///  阿里云的短信实现
     /// </summary>
-    public class AliSmsClient:BaseMetaImpl<AliSmsConfig>
+    public class AliSmsClient//:BaseMetaImpl<AliSmsConfig>
     {
-        /// <inheritdoc />
-        public AliSmsClient()
+        /// <summary>
+        /// 发送短信
+        /// </summary>
+        /// <param name="sendReq"></param>
+        /// <returns></returns>
+        public async Task<SendAliSmsResp> SendAsync(AliSendSmsReq sendReq)
         {
-        }
-
-        /// <inheritdoc />
-        public AliSmsClient(IMetaProvider<AliSmsConfig> configProvider)
-            : base(configProvider)
-        {
-        }
-
-        public async Task<SendAliSmsResp> Send(SendAliSmsReq sendReq)
-        {
-            var appConfigRes =await GetMeta();
-            if (!appConfigRes.IsSuccess())
-                return new SendAliSmsResp().WithResp(appConfigRes);
-
-            var appConfig = appConfigRes.data;
+            var appConfig = await AliSmsHelper.GetSecret();
             var dirs = new SortedDictionary<string, string>(StringComparer.Ordinal)
             {
                 {"Action", "SendSms"},
-                {"Version", appConfig.Version},
-                {"RegionId", appConfig.RegionId},
-                {"PhoneNumbers", string.Join(",", sendReq.PhoneNums)},
+                {"Version", appConfig.version},
+                {"RegionId", appConfig.region_id},
+                {"PhoneNumbers", string.Join(",", sendReq.phone_nums)},
                 {"SignName", sendReq.sign_name},
                 {"TemplateCode", sendReq.template_code}
             };
@@ -74,45 +61,36 @@ namespace OSS.Clients.SMS.Ali
 
             var req = new OssHttpRequest
             {
-                AddressUrl = string.Concat("http://dysmsapi.aliyuncs.com?", GeneratePostData(appConfig, dirs)),
-                HttpMethod = HttpMethod.Get
+                address_url = string.Concat("http://dysmsapi.aliyuncs.com?", GeneratePostData(appConfig, dirs)),
+                http_method = HttpMethod.Get
             };
 
-            using (var resp = await req.RestSend())
-            {
-
-                var content = await resp.Content.ReadAsStringAsync();
-                 return JsonConvert.DeserializeObject<SendAliSmsResp>(content);
-
-            }
+            var content = await req.SendAsync().ReadContentAsStringAsync();
+            return JsonConvert.DeserializeObject<SendAliSmsResp>(content);
         }
 
-        /// <inheritdoc />
-        protected override AliSmsConfig GetDefaultMeta()
-        {
-           return AliSmsConfigProvider.DefaultConfig;
-        }
+   
 
         #region 辅助方法
 
-        private static string GeneratePostData(AliSmsConfig config, SortedDictionary<string, string> paras)
+        private static string GeneratePostData(IAccessSecret config, SortedDictionary<string, string> paras)
         {
             var content = string.Join("&",
                 paras.Select(k =>
                     string.Concat(SpecicalUrlEncode(k.Key), "=", SpecicalUrlEncode(k.Value))));
 
             var preEncryStr = string.Concat("GET&", SpecicalUrlEncode("/"), "&", SpecicalUrlEncode(content));
-            var sign = HMACSHA.EncryptBase64(preEncryStr, string.Concat(config.AppSecret, "&"));
+            var sign = HMACSHA.EncryptBase64(preEncryStr, string.Concat(config.access_secret, "&"));
 
             return string.Concat("Signature=", SpecicalUrlEncode(sign), "&", content);
         }
 
-        private static void FillApiPara(AliSmsConfig config, IDictionary<string, string> sortDic)
+        private static void FillApiPara(IAccessKey config, IDictionary<string, string> sortDic)
         {
             var dateTime = DateTime.Now.ToUniversalTime()
                 .ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.CreateSpecificCulture("en-US"));
 
-            sortDic.Add("AccessKeyId", config.AppId);
+            sortDic.Add("AccessKeyId", config.access_key);
             sortDic.Add("Timestamp", dateTime);
             sortDic.Add("Format", "JSON");
             sortDic.Add("SignatureMethod", "HMAC-SHA1");
@@ -123,7 +101,7 @@ namespace OSS.Clients.SMS.Ali
 
         private static string SpecicalUrlEncode(string data)
         {
-            return data.UrlEncode().Replace("+", "%20").Replace("*", "%2A").Replace("%7E", "~");
+            return data.SafeEscapeUriDataString().Replace("+", "%20").Replace("*", "%2A").Replace("%7E", "~");
         }
 
         #endregion

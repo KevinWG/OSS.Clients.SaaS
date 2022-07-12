@@ -12,11 +12,14 @@
 #endregion
 
 using System.Collections.Generic;
-using OSS.Common.BasicMos.Resp;
 
-namespace OSS.Clients.SMS.Ali.Reqs
+
+namespace OSS.Clients.SMS.Ali
 {
-    public class SendAliSmsReq
+    /// <summary>
+    ///  阿里云短信发送请求
+    /// </summary>
+    public class AliSendSmsReq
     {
         /// <summary>
         ///  模板编号
@@ -26,7 +29,7 @@ namespace OSS.Clients.SMS.Ali.Reqs
         /// <summary>
         /// 手机号码
         /// </summary>
-        public IList<string> PhoneNums { get; set; }
+        public IList<string> phone_nums { get; set; }
 
         /// <summary>
         ///  签名
@@ -40,7 +43,10 @@ namespace OSS.Clients.SMS.Ali.Reqs
 
     }
 
-    public class SendAliSmsResp : Resp
+    /// <summary>
+    ///  发送短信响应结果
+    /// </summary>
+    public class SendAliSmsResp
     {
         /// <summary>
         ///  状态码-返回OK代表请求成功,其他错误码详见错误码列表

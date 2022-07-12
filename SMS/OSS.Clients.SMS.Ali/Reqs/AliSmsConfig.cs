@@ -13,15 +13,23 @@
 
 #endregion
 
-using OSS.Common.BasicMos;
+using OSS.Common;
 
-namespace OSS.Clients.SMS.Ali.Reqs
+namespace OSS.Clients.SMS.Ali
 {
-    public class AliSmsConfig:AppConfig
+    /// <summary>
+    ///  阿里云短信秘钥配置信息
+    /// </summary>
+    public class AliSmsSecret : AccessSecret
     {
+        /// <summary>
+        ///  版本号
+        /// </summary>
+        public string version { get; set; }
 
-        public string Version { get; set; }
-
-        public string RegionId { get; set; }
+        /// <summary>
+        ///  地区id
+        /// </summary>
+        public string region_id { get; set; }
     }
 }

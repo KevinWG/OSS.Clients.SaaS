@@ -24,7 +24,6 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using OSS.Common.Extension;
 
 namespace OSS.Clients.SMS.Ali
 {

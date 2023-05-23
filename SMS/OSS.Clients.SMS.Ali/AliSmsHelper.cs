@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Threading.Tasks;
 
 namespace OSS.Clients.SMS.Ali
 {
@@ -8,9 +7,7 @@ namespace OSS.Clients.SMS.Ali
     /// </summary>
     public  static class AliSmsHelper
     {
-
-
-        private static IAliSmsSecretProvider _secretProvider;
+        private static IAliSmsSecretProvider? _secretProvider;
 
         /// <summary>
         ///  配置  阿里云短信访问秘钥提供者
@@ -24,21 +21,19 @@ namespace OSS.Clients.SMS.Ali
         /// <summary>
         ///  默认短信密钥配置
         /// </summary>
-        public static AliSmsSecret default_secret { get; set; }
+        public static AliSmsSecret? default_secret { get; set; }
 
 
         internal static async Task<AliSmsSecret> GetSecret()
         {
-            AliSmsSecret secret =null ;
+            AliSmsSecret? secret =null ;
+
             if (_secretProvider !=null)
             {
                 secret = await _secretProvider.Get();
             }
 
-            if (secret == null)
-            {
-                secret = default_secret;
-            }
+            secret ??= default_secret;
 
             if (secret == null)
             {

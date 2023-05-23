@@ -18,12 +18,7 @@ using OSS.Common;
 using OSS.Common.Encrypt;
 using OSS.Common.Extension;
 using OSS.Tools.Http;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace OSS.Clients.SMS.Ali
 {

@@ -1,39 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.2</Version>
-    <Authors>OSSCore</Authors>
-    <Company>OSSCore</Company>
-    <Product>OSS.Clients.SMS.Ali</Product>
-    <RepositoryUrl>https://github.com/KevinWG/OSS.Clients.SaaS</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/KevinWG/OSS.Clients.SaaS</PackageProjectUrl>
-    <Description>阿里云短信发送封装</Description>
-    <PackageReleaseNotes>配置优化处理</PackageReleaseNotes>
-    <PackageIcon>logo.png</PackageIcon>
-    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
-    <OutputPath></OutputPath>
-  </PropertyGroup>
+		<PackageIconUrl>http://img1.osscore.cn/static/oss_net.png</PackageIconUrl>
+		<Version>1.3.1</Version>
+		<Authors>OSSCore</Authors>
+		<Company>OSSCore</Company>
+		<Product>OSS.Clients.SMS.Ali</Product>
+		<RepositoryUrl>https://github.com/KevinWG/OSS.Clients.SaaS</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/KevinWG/OSS.Clients.SaaS</PackageProjectUrl>
+		<Description>阿里云短信发送封装</Description>
+		<PackageReleaseNotes>配置优化处理</PackageReleaseNotes>
+		<BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="OSS.Common" Version="6.0.0" />
-    <PackageReference Include="OSS.Tools.Http" Version="2.6.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="OSS.Common" Version="6.0.0" />
-    <PackageReference Include="OSS.Tools.Http" Version="2.6.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="OSS.Common" Version="7.0.1" />
+		<PackageReference Include="OSS.Tools.Http" Version="3.0.0" />
+	</ItemGroup>
 
 </Project>

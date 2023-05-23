@@ -11,8 +11,6 @@
 
 #endregion
 
-using System.Collections.Generic;
-
 
 namespace OSS.Clients.SMS.Ali
 {
